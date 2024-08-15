@@ -1,2 +1,20 @@
-# tilde
-A 2D, tile-based, software pixel renderer with a focus on speed and usability.
+# Description
+Tilde is going to be a custom-built—entirely designed from the ground up—rendering engine for tile-based 2D pixel rendering. The objective for this engine is to render multiple “maps” of tiles, render sprites with pixel-perfect positioning, and render UI overlay.
+## Goal
+The _primary_ goal of the pixel renderer is to provide a jumpstart to the game engine development process. It is designed to be used for rendering tiled worlds. For 2D games, this is a fairly common feature that developers implement, so having a library expressly tuned for this functionality, with every part of the renderer built around it, allows developers to spend less time worrying about the implementation of the renderer and more on the game they wish to develop.
+## Maps
+Maps are separated screens of tiles, acting as separate scenes to the renderer. The renderer _does not_ track nor maintain object state, merely the tiles for each map. Any additional functionality to be added would be done by the user—of which would be using the renderer as a library to build a game engine.
+
+# FAQ
+## Why Doesn’t it do Hardware Acceleration?
+The main reason hardware acceleration is not considered is because of the library's primary goal. This library seeks to maintain a light, easy-to-use, plug-and-play configuration. Secondly, this library is—at heart—a retro library. A part of this stylization means that using hardware rendering interfaces such as OpenGL, DirectX11/12, Metal, or Vulkan would be considered outside the space of the library’s goal. The library uses full control of the rendering process, this means that it maintains and controls the direct pixel buffer that renders on the screen. To completely utilize the buffer in this way, it has to have as much control as possible. Using hardware acceleration would interrupt that and force the usage of things like shaders to achieve the same result. While this isn’t difficult to implement necessarily, it would prove to be a significantly higher amount of work compared to the software-driven route. It would also derail outside the retro boundaries that I would like to maintain.
+## Besides the rendering, what else is offered?
+The rendering engine will provide a simple saving system for maps. This will allow you to design a map, and then save that map into a file. The reason for this feature would be for map creation software. If you designed a program to make maps for a game you’re developing, you could save the map, and then load it as an asset for the main game itself. _As stated previously_, the map-saving feature will not manage the object state, but it will manage the tile placement. This will allow the engine to load a map quickly and allow for the developer to focus purely on the layout and functionality of the object built.
+
+Additionally, the rendering engine will provide an easy interface for window creation, so a window can be quickly built and prepared for the game. It will also create and manage a game loop for the developer. The catch to this is that the game loop will be handled on the main thread, so beware of the limitations.
+## What would be the purpose of a retro rendering engine?
+The purpose of this library isn’t to provide a general-use rendering engine to handle every need, quite the opposite. It is focused on one goal, to bring an easy startup to retro game development. This engine has a focus on imitating the old technology. With this view in mind, the games that would be rendered on an engine like this would be games that imitate those from the 80s to early 90s, lightweight games. You could build an entire RPG on an engine like this, but it can also handle smaller and much simpler ideas.
+
+This library is perfect for someone who wants to develop a fun game that captures the old feeling of retro games and seeks to imitate the style of games like that. This engine will be fiercely limited in functionality to respect the tile-based rendering that will power it, but it doesn’t limit what can be done on it. Given the right drive, it can achieve more than what’s offered on the surface.
+## Will this engine render text?
+Yes. This engine will use a sprite sheet provided with it to render text on the screen. This will allow you to quickly display information and render text quickly, without needing to implement it yourself.
