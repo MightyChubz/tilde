@@ -37,6 +37,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4
       - name: Clippy Action
         uses: auguwu/clippy-action@1.4.0
         with:
