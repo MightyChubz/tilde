@@ -37,8 +37,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Rust Clippy Check
-        uses: actions-rs/clippy-check@v1.0.7
+      - name: Clippy Action
+        uses: auguwu/clippy-action@1.4.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          toolchain: nightly
+
